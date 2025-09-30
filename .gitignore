@@ -3,3 +3,15 @@ node_modules
 .env
 
 /src/generated/prisma
+.env.local
+.env.production
+.env.example
+.env.production
+.env.local
+.env.example
+.env.local
+.env.production
+bot/.env.local
+*.local
+*.production
+*.local
