@@ -1,0 +1,47 @@
+/* /styles/ConstellationMap.module.css */
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  background-color: #0c0a1a;
+  background-image: radial-gradient(white 0.5px, transparent 0), radial-gradient(white 0.5px, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(100, 100, 255, 0.2);
+}
+.starfield, .twinkling {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: block;
+}
+.starfield {
+  background: transparent url(/img/stars.png) repeat top center; z-index: 1;
+}
+.twinkling {
+  background: transparent url(/img/twinkling.png) repeat top center; z-index: 2; animation: move-twink-back 200s linear infinite;
+}
+@keyframes move-twink-back { from { background-position: 0 0; } to { background-position: -10000px 5000px; } }
+.connectorLines {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;
+}
+.line {
+  stroke: rgba(100, 149, 237, 0.3); stroke-width: 1.5px;
+}
+.glowingLine {
+  stroke: #fff; stroke-width: 1px; stroke-dasharray: 10; animation: glow-anim 4s linear infinite;
+}
+@keyframes glow-anim { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+.starNode {
+  position: absolute; width: 96px; height: 96px; z-index: 4; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s;
+}
+.starNode:hover { transform: scale(1.15); }
+.starIcon {
+  width: 64px; height: 64px; border-radius: 50%; background-color: rgba(13, 22, 41, 0.9); border: 2px solid #2d5a8b; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 15px rgba(0, 100, 255, 0.5); transition: box-shadow 0.3s, border-color 0.3s; color: #a0aec0; font-weight: bold;
+}
+.starNode:hover .starIcon { box-shadow: 0 0 30px rgba(100, 200, 255, 0.8); }
+.starNode.unlocked .starIcon { border-color: #f5b040; box-shadow: 0 0 20px #f5b040; animation: pulse-gold 2.5s infinite; }
+@keyframes pulse-gold { 0% { box-shadow: 0 0 10px #f5b040; } 50% { box-shadow: 0 0 25px #f5b040; } 100% { box-shadow: 0 0 10px #f5b040; } }
+.starTooltip {
+  visibility: hidden; position: absolute; bottom: 105%; left: 50%; transform: translateX(-50%); background-color: rgba(0,0,0,0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s; z-index: 5;
+}
+.starNode:hover .starTooltip { visibility: visible; opacity: 1; }

@@ -1,0 +1,222 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Sem alterações
+model GameState {
+  wallet              String    @id
+  state               Json
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  isWithdrawalBlocked Boolean   @default(false)
+  isShadowbanned      Boolean   @default(false)
+  starterPackClaimed Boolean @default(false)
+}
+
+// Sem alterações
+model ShopItem {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  currency    String
+  itemType    String
+  buffData    Json?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+// Sem alterações
+model GameConfig {
+  id        Int      @id @default(1)
+  config    Json
+  updatedAt DateTime @updatedAt
+}
+
+// Sem alterações
+model PlayerStat {
+  id                  Int     @id @default(autoincrement())
+  userWallet          String  @unique
+  totalTokensProduced Float   @default(0)
+  maxLevelReached     Int     @default(1)
+  weeklyScore         Float   @default(0)
+  updatedAt           DateTime @updatedAt
+}
+
+// Sem alterações
+model Inventory {
+  id         Int      @id @default(autoincrement())
+  userWallet String
+  itemId     String
+  quantity   Int      @default(1)
+  equipped   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  @@unique([userWallet, itemId])
+}
+
+// Sem alterações
+model Prestige {
+  id            Int      @id @default(autoincrement())
+  userWallet    String
+  roomId        Int
+  prestigeLevel Int      @default(0)
+  createdAt     DateTime @default(now())
+  @@unique([userWallet, roomId])
+}
+
+// <<< MIGRAÇÃO RONIN: Modelo Expedition atualizado >>>
+model Expedition {
+  id              Int      @id @default(autoincrement())
+  userWallet      String
+  // REMOVIDO: nftMint       String   @unique
+  // ADICIONADO: Identificadores para NFT ERC-721
+  contractAddress String
+  tokenId         Int
+  missionType     String
+  rewardToken     String
+  rewardAmount    Float
+  endsAt          DateTime
+  rewardClaimed   Boolean  @default(false)
+  startedAt       DateTime @default(now())
+  
+  // Garante que um NFT específico (contrato + ID) só possa estar em uma expedição ativa por vez.
+  @@unique([contractAddress, tokenId])
+}
+
+// Sem alterações (mas o campo endsAt pode ser opcional ou removido se não for usado)
+model MarketListing {
+  id                 Int      @id @default(autoincrement())
+  sellerWallet       String
+  tokenType          String
+  amount             Float
+  pricePerUnitInVIDA Float
+  isActive           Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  endsAt             DateTime // Este campo pode precisar de um @default se não for sempre fornecido
+}
+
+// Sem alterações
+model GlobalEvent {
+  id            Int      @id @default(autoincrement())
+  name          String
+  description   String
+  targetToken   String
+  goalAmount    Float
+  currentAmount Float    @default(0)
+  isActive      Boolean  @default(true)
+  endsAt        DateTime
+  rewardItemId  String
+  rewardAmount  Float
+  contributions EventContribution[]
+}
+
+// Sem alterações
+model EventContribution {
+  id          Int      @id @default(autoincrement())
+  userWallet  String
+  eventId     Int
+  amount      Float
+  createdAt   DateTime @default(now())
+  event       GlobalEvent @relation(fields: [eventId], references: [id])
+}
+
+// Sem alterações
+model Referral {
+  id        Int      @id @default(autoincrement())
+  referrer  String
+  referred  String   @unique
+  claimed   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// Sem alterações
+model UserAchievement {
+  id            Int      @id @default(autoincrement())
+  userWallet    String
+  achievementId String
+  isClaimed     Boolean  @default(false)
+  unlockedAt    DateTime @default(now())
+  @@unique([userWallet, achievementId])
+}
+
+// Sem alterações
+model WithdrawTransaction {
+  id        String   @id @default(cuid())
+  wallet    String
+  token     String
+  amount    Float
+  signature String   @unique
+  createdAt DateTime @default(now())
+}
+
+// Sem alterações
+model DepositTransaction {
+  id         String   @id @default(cuid())
+  wallet     String
+  amount     Float
+  currency   String   // Ex: "RON"
+  itemName   String
+  signature  String   @unique
+  createdAt  DateTime @default(now())
+}
+
+// <<< MIGRAÇÃO RONIN: Modelo rewardNft atualizado >>>
+model rewardNft {
+  id              String   @id @default(cuid())
+  // REMOVIDO: mintAddress String   @unique
+  // ADICIONADO: Identificadores para NFT ERC-721
+  contractAddress String
+  tokenId         Int      @unique // O tokenId é único dentro de um contrato
+  name            String
+  imageUrl        String
+  rarity          String
+  isAwarded       Boolean  @default(false)
+  ownerWallet     String?
+  createdAt       DateTime @default(now())
+  
+  // Garante que a combinação de contrato e ID de token seja única no seu pool de recompensas
+  @@unique([contractAddress, tokenId])
+}
+
+// <<< MIGRAÇÃO RONIN: Modelo NftMintPool atualizado >>>
+model NftMintPool {
+  // O ID pode ser a combinação de contractAddress e tokenId para garantir unicidade
+  contractAddress String
+  tokenId         Int
+  rarity          String
+  isMinted        Boolean  @default(false)
+  mintedTo        String?
+  mintedAt        DateTime?
+  
+  @@id([contractAddress, tokenId])
+}
+
+// <<< MIGRAÇÃO RONIN: Modelo AirdropClaim atualizado >>>
+model AirdropClaim {
+  id              Int      @id @default(autoincrement())
+  userWallet      String   @unique
+  // REMOVIDO: nftMintAddress  String
+  // REMOVIDO: nftId           Int
+  // ADICIONADO: Identificadores para o NFT que foi entregue no airdrop
+  contractAddress String
+  tokenId         Int
+  claimedAt       DateTime @default(now())
+}
+
+// Adicione este modelo ao seu schema.prisma
+model Nft {
+  id          Int     @id @default(autoincrement())
+  tokenId     Int     @unique
+  rarity      String
+  ownerWallet String? // Nulo = disponível para venda, preenchido = vendido
+  name        String?
+  image       String?
+}

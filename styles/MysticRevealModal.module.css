@@ -1,0 +1,30 @@
+/* styles/MysticRevealModal.module.css (VERSÃO ATUALIZADA) */
+
+.overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(3, 8, 15, 0.9);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000; backdrop-filter: blur(10px);
+}
+.container { perspective: 1000px; }
+.gif { max-width: 90vw; max-height: 90vh; border-radius: 20px; }
+
+.nftCard {
+    width: 300px;
+    background: linear-gradient(145deg, #1a233b, var(--lab-bg));
+    border: 2px solid #8d47be; border-radius: 16px;
+    box-shadow: 0 0 50px #8d47be, 0 10px 40px rgba(0,0,0,0.6);
+    overflow: hidden; text-align: center; color: white;
+    animation: flipIn 0.8s ease-out forwards;
+}
+@keyframes flipIn { from { transform: rotateY(90deg) scale(0.8); opacity: 0; } to { transform: rotateY(0) scale(1); opacity: 1; } }
+
+.rarityBanner { background: #8d47be; font-weight: bold; padding: 0.5rem 0; font-size: 1.2rem; }
+.nftImage { width: 100%; height: auto; }
+.nftCard h3 { margin: 1rem 0; }
+.closeButton {
+    background: #8d47be; color: white; border: none; width: 100%;
+    padding: 1rem; font-size: 1.2rem; font-weight: bold;
+    cursor: pointer; transition: background-color 0.2s ease;
+}
+.closeButton:hover { background: #7a3da8; }

@@ -1,0 +1,82 @@
+/* styles/BackgroundPipes.module.css */
+
+.pipesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  transition: filter 0.5s ease-in-out;
+}
+
+/* Efeito de brilho para o passe premium */
+.mysticGlow {
+  filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.7));
+  animation: mystic-pulse 2s infinite alternate;
+}
+
+@keyframes mystic-pulse {
+  from {
+    filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.7));
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(255, 223, 0, 1));
+  }
+}
+
+/* Estilo base para todos os tubos (o "vidro") */
+.pipe {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.pipeVertical { width: 30px; border-radius: 15px; }
+.pipeHorizontal { height: 30px; border-radius: 15px; }
+.pipeTee {
+  width: 80px;
+  height: 30px;
+  border-radius: 15px;
+  transform: translateX(-50px);
+}
+.pipeTee::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 25px;
+  width: 30px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animação base para o líquido */
+.liquid {
+  width: 100%;
+  height: 100%;
+  background-size: 80px 80px;
+  animation: flow-animation 3s linear infinite;
+}
+
+@keyframes flow-animation {
+  from { background-position: 0 0; }
+  to { background-position: -160px 0; }
+}
+
+/* Cores dos líquidos (baseadas nas raridades) */
+.liquidGray {
+  background-image: linear-gradient(45deg, #888 25%, #666 25%, #666 50%, #888 50%, #888 75%, #666 75%, #666 100%);
+}
+.liquidUncommon {
+  background-image: linear-gradient(45deg, #4dff4d 25%, #33cc33 25%, #33cc33 50%, #4dff4d 50%, #4dff4d 75%, #33cc33 75%, #33cc33 100%);
+}
+.liquidCommon {
+  background-image: linear-gradient(45deg, #ccc 25%, #aaa 25%, #aaa 50%, #ccc 50%, #ccc 75%, #aaa 75%, #aaa 100%);
+}
+.liquidRare {
+  background-image: linear-gradient(45deg, #4da6ff 25%, #3385cc 25%, #3385cc 50%, #4da6ff 50%, #4da6ff 75%, #3385cc 75%, #3385cc 100%);
+}

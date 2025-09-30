@@ -1,0 +1,56 @@
+/* styles/AchievementsPage.module.css */
+.pageContainer { /* ... (mesmo container das outras páginas) ... */ }
+.header { /* ... (mesmo header) ... */ }
+.title { /* ... */ }
+.backButton { /* ... */ }
+
+.mainBox {
+  background-color: #0e2439;
+  border: 1px solid #1a3a59;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.achievementsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.achievementSlot {
+  background-color: #0d1a26;
+  border: 1px solid #1a3a59;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  opacity: 0.5; /* Padrão para não completas */
+}
+
+.achievementSlot.completed {
+  opacity: 1;
+  border-color: #ffc107; /* Amarelo para completas e não coletadas */
+}
+
+.achievementSlot.claimed {
+  opacity: 0.7;
+  filter: grayscale(80%);
+  border-color: #1a3a59;
+}
+
+.icon { width: 64px; height: 64px; margin-bottom: 0.5rem; }
+.name { margin: 0.5rem 0; font-size: 1.1rem; color: #fff; }
+.description { font-size: 0.9rem; color: #adb5bd; min-height: 40px; }
+.reward { font-weight: bold; color: #ffc107; }
+
+.footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #1a3a59;
+  text-align: center;
+}
+
+.claimButton {
+  padding: 1rem 2rem; font-size: 1.2rem; background-color: #28a745;
+  color: white; border: none; border-radius: 5px; cursor: pointer;
+}
+.claimButton:disabled { background-color: #343a40; }

@@ -1,0 +1,33 @@
+/* styles/Crafting.module.css (VERSÃO CORRIGIDA) */
+.recipeList { display: flex; flex-direction: column; gap: 2rem; }
+.recipeCard {
+  background: var(--lab-bg); border: 1px solid var(--lab-border);
+  border-radius: 8px; padding: 1.5rem; display: flex; gap: 1.5rem;
+}
+
+.itemImageContainer {
+  flex-shrink: 0; width: 120px; height: 120px;
+  background-color: var(--lab-bg-secondary); border: 1px dashed var(--lab-border);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  padding: 5px;
+}
+
+.itemImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.details { flex-grow: 1; display: flex; flex-direction: column; }
+.recipeHeader { display: flex; justify-content: space-between; align-items: baseline; }
+.recipeHeader h3 { margin: 0 0 1rem 0; font-size: 1.5rem; color: #fff; }
+.createsText { font-size: 0.9rem; color: var(--text-secondary); }
+.createsText span { color: var(--accent-yellow); font-weight: bold; }
+.description { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+.ingredientsList { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.ingredient { display: flex; justify-content: space-between; align-items: center; }
+.ingredient .progress { flex-grow: 1; height: 1.5rem; background-color: var(--lab-bg-secondary); border-radius: 4px; margin: 0 1rem; overflow: hidden; border: 1px solid var(--lab-border); }
+.ingredient .progressBar { height: 100%; background-color: var(--accent-green); transition: width 0.3s; }
+
+/* <<< A CORREÇÃO ESTÁ AQUI: OS TRÊS APÓSTROFOS FORAM REMOVIDOS >>> */
+.ingredient .progressText { color: var(--text-secondary); }

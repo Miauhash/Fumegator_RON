@@ -1,0 +1,63 @@
+/* styles/DoorUnlockModal.module.css (VERSÃO FINAL E CORRIGIDA) */
+
+.overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(3, 8, 15, 0.7);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000; animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modalContent {
+  position: relative; width: 320px; height: 480px;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.scene {
+  width: 100%; height: 100%; perspective: 1500px; position: absolute;
+}
+
+.door {
+  width: 100%; height: 100%; position: relative;
+  background-color: var(--lab-bg-secondary);
+  border: 4px solid var(--lab-border);
+  border-radius: 8px; transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1.5s cubic-bezier(0.6, 0, 0.2, 1);
+  box-shadow: 5px 0px 15px rgba(0,0,0,0.4);
+}
+
+.doorWindow {
+  position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+  width: 160px; height: 200px; background-color: rgba(3, 8, 15, 0.5);
+  border: 4px solid var(--lab-border); border-radius: 4px;
+}
+.doorHandle, .doorLock {
+  position: absolute; right: 25px; width: 50px; height: 10px;
+  background-color: var(--text-secondary); border-radius: 5px;
+}
+.doorHandle { top: 55%; }
+.doorLock { top: 55%; margin-top: 25px; width: 20px; height: 20px; border-radius: 50%; }
+
+.controls {
+  z-index: 10;
+  position: relative; /* <<< A CORREÇÃO CRÍTICA ESTÁ AQUI */
+  text-align: center; color: white;
+  text-shadow: 1px 1px 3px black;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.title { font-size: 1.8rem; color: var(--text-primary); }
+.costText { font-size: 1rem; color: var(--text-secondary); margin: 0; }
+
+.buttonGroup {
+    display: flex; flex-direction: column; gap: 0.75rem; width: 80%;
+}
+
+.orText {
+    font-weight: bold;
+    color: var(--text-secondary);
+}
+
+.cancelButton {
+    margin-top: 1rem;
+}

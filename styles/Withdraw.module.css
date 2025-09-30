@@ -1,0 +1,42 @@
+/* styles/Withdraw.module.css (NOVO ARQUIVO) */
+.tokenList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.tokenRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--lab-bg);
+  border: 1px solid var(--lab-border);
+  border-radius: 4px;
+}
+
+.tokenRow.disabled {
+  opacity: 0.5;
+}
+
+.tokenInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.tokenName {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.tokenBalance {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.modalActions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}

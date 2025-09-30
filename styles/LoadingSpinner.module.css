@@ -1,0 +1,138 @@
+/* styles/LoadingSpinner.module.css (VERSÃO FINAL com Animação de Sprite e Barra Ativa) */
+
+/* Container principal da tela de carregamento */
+.gibiContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #03080f;
+  z-index: 9999;
+  font-family: var(--font-primary);
+  padding: 1rem;
+  cursor: pointer;
+  overflow: hidden; /* Garante que nada saia da tela */
+}
+
+/* Painel de dicas no centro */
+.gibiPanel {
+  background: rgba(10, 20, 34, 0.8);
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--lab-border);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeInPanel 0.5s ease-out;
+  cursor: default;
+  z-index: 10;
+}
+
+@keyframes fadeInPanel {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeInTip {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.dialogueBox {
+  background: var(--lab-bg);
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  animation: fadeInTip 0.4s ease-out;
+}
+.dialogueTitle {
+  font-weight: bold;
+  color: var(--cyan-text);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+.dialogueText {
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+.clickPrompt {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* --- PISTA DE ANIMAÇÃO E BARRA DE PROGRESSO --- */
+.animationTrack {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 5vh;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.spriteContainer {
+    width: 100%;
+    position: relative;
+    height: 178px; /* Altura do frame (168px) + 10px de espaço */
+    margin-bottom: 1rem;
+}
+.loadingBarContainer {
+  width: 80%;
+  max-width: 800px;
+  height: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--lab-border);
+}
+.loadingBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan-text), var(--cyan-glow));
+  border-radius: 8px;
+  width: 0%;
+  transition: width 0.4s ease-out;
+}
+.loadingMessage {
+  text-align: center;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+
+/* --- ANIMAÇÃO DO SPRITE (COM OS VALORES CORRETOS) --- */
+.runningMascot {
+    height: 168px;  /* <<< ALTURA EXATA DE 1 FRAME >>> */
+    width: 235px;   /* <<< LARGURA EXATA DE 1 FRAME >>> */
+    background-image: url('/img/mascot-spritesheet.png');
+    position: absolute;
+    bottom: 15px;   /* Posicionado 15px acima da base (em cima da barra de progresso) */
+    
+    animation: 
+        runAcrossScreen 6s linear infinite,
+        walkCycle 0.7s steps(4) infinite; /* <<< 4 FRAMES >>> */
+}
+
+/* Animação do ciclo de corrida */
+@keyframes walkCycle {
+   from { background-position: 0 0; }
+   /* LARGURA_TOTAL = 940px */
+   to { background-position: -940px 0; } 
+}
+
+/* Animação de movimento pela tela */
+@keyframes runAcrossScreen {
+  from { left: -235px; } /* Começa fora (negativo da LARGURA DE 1 FRAME) */
+  to { left: 100%; }
+}

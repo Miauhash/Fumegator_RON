@@ -1,0 +1,91 @@
+/* styles/SellItemModal.module.css (NOVO ARQUIVO) */
+
+.itemInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.itemImage {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+}
+
+.itemDetails h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.itemDetails p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.input {
+    padding: 0.75rem;
+    background-color: var(--background-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--accent-color);
+}
+
+.summary {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.summary p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.summary p span {
+    color: var(--accent-color-gold);
+    font-weight: bold;
+}
+
+.summary small {
+    color: var(--text-secondary);
+}
+
+.error {
+    color: var(--accent-color-red);
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+}

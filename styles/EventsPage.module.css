@@ -1,0 +1,43 @@
+/* styles/EventsPage.module.css (VERSÃO ATUALIZADA) */
+
+.canvas { /* Este estilo pode não ser usado se for um modal, mas é bom ter */
+    min-height: 100vh; padding: 2rem; color: var(--text-primary); background-color: var(--lab-bg);
+}
+.container { width: 100%; max-width: 1200px; margin: 0 auto; }
+.header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem; border-bottom: 1px solid var(--lab-border); padding-bottom: 1.5rem;
+}
+.title { font-size: 2.5rem; color: var(--cyan-text); margin: 0; }
+.backButton { /* Reutiliza o estilo de botão fantasma */ }
+
+.card {
+    background: var(--lab-bg); border: 1px solid var(--lab-border);
+    border-radius: 8px; padding: 1.5rem 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.eventGrid {
+    display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;
+    grid-template-areas: "info progress" "info contribution";
+}
+.eventInfoCard { grid-area: info; }
+.progressCard { grid-area: progress; }
+.contributionCard { grid-area: contribution; }
+.eventInfoCard h2 { font-size: 1.8rem; color: var(--cyan-text); margin-top: 0; }
+.description { color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; }
+.rewardInfo {
+    background: var(--lab-bg-secondary); padding: 1rem; border-radius: 5px;
+    border-left: 4px solid var(--cyan-glow); display: flex; justify-content: space-between; align-items: center;
+}
+.rewardInfo span { font-size: 1.1rem; font-weight: bold; color: var(--accent-yellow); }
+.progressContainer { width: 100%; height: 30px; background: var(--lab-bg-secondary); border-radius: 15px; position: relative; overflow: hidden; margin-top: 1rem; }
+.progressBar { height: 100%; background: linear-gradient(90deg, var(--cyan-glow), var(--accent-green)); border-radius: 15px; transition: width 0.5s ease-in-out; }
+.progressText { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: bold; text-shadow: 1px 1px 2px #000; }
+.balanceInfo { background-color: var(--lab-bg-secondary); padding: 0.5rem; border-radius: 4px; margin: 1rem 0; }
+
+.form { display: flex; gap: 0.5rem; }
+.input { /* Reutiliza o estilo do FeatureModal */ }
+.button { /* Reutiliza o estilo do FeatureModal */ }
+
+@media (max-width: 768px) {
+    .eventGrid { grid-template-columns: 1fr; grid-template-areas: "info" "progress" "contribution"; }
+}

@@ -1,0 +1,31 @@
+/* styles/AdModal.module.css (VERSÃO ATUALIZADA) */
+
+.modalBackdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(3, 8, 15, 0.85); backdrop-filter: blur(5px);
+  display: flex; justify-content: center; align-items: center; z-index: 1000;
+}
+
+.modalContent {
+  background: var(--lab-bg-secondary); border: 1px solid var(--lab-border);
+  border-radius: 8px; padding: 1.5rem; width: 90%; max-width: 600px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); color: var(--text-primary);
+  display: flex; flex-direction: column;
+}
+
+.header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--lab-border);
+}
+
+.header p { margin: 0; font-weight: bold; color: var(--cyan-text); }
+
+.footer { text-align: center; margin-top: 1rem; }
+
+.unlockButton {
+    background: var(--cyan-glow); color: var(--lab-bg); border: none;
+    padding: 0.8rem 1.5rem; border-radius: 4px; font-size: 1rem;
+    font-weight: bold; cursor: pointer; transition: all 0.2s ease;
+}
+.unlockButton:hover:not(:disabled) { filter: brightness(1.2); }
+.unlockButton:disabled { background: #34495e; color: #7f8c8d; cursor: not-allowed; }

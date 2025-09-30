@@ -1,0 +1,114 @@
+/* styles/SlotMachine.module.css */
+.slotMachineContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fffe 100%);
+  border: 3px solid var(--teal-ink);
+  box-shadow: var(--card-shadow);
+  border-radius: 25px;
+  max-width: 450px;
+}
+
+.reelsWindow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 280px;
+  height: 80px;
+  background-color: #e0f2f1;
+  border: 3px solid var(--teal-ink);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Adiciona uma sobreposição para dar profundidade */
+.reelsWindow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 7px;
+  box-shadow: inset 0 10px 10px rgba(0,0,0,0.1), inset 0 -10px 10px rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+
+.reel {
+  width: 80px;
+  height: 100%;
+}
+
+.reelStrip {
+  display: flex;
+  flex-direction: column;
+  transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1); /* Animação de parada suave */
+}
+
+.reelStrip.spinning {
+  animation: spin 0.3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); } /* Aumenta a distância para girar mais rápido */
+}
+
+.symbol {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-bottom: 2px solid #c8ece9;
+}
+
+.symbol img {
+  width: 64px;
+  height: 64px;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.priceDisplay {
+  font-family: 'Press Start 2P', system-ui, sans-serif;
+  color: var(--teal-ink);
+  background-color: #e0f2f1;
+  padding: 5px 10px;
+  border: 2px solid var(--teal-ink);
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.leverHandle {
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', system-ui, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background: var(--play);
+  border: 3px solid var(--teal-ink);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.leverHandle:hover:not(:disabled) {
+  background: var(--play-dark);
+}
+
+.leverHandle:disabled {
+  background-color: #555;
+  color: #999;
+  cursor: not-allowed;
+}

@@ -1,0 +1,57 @@
+/* styles/Asylum.module.css (VERSÃO ATUALIZADA) */
+
+.modalOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(3, 8, 15, 0.8); backdrop-filter: blur(5px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+    background: var(--lab-bg-secondary); border: 1px solid var(--lab-border);
+    padding: 2rem; border-radius: 8px; width: 90%; max-width: 800px;
+    position: relative; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5); color: var(--text-primary);
+}
+
+.closeButton {
+    position: absolute; top: 1rem; right: 1rem; background: transparent;
+    border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer;
+}
+
+.modalContent h2 {
+    text-align: center; color: var(--cyan-text);
+    margin-top: 0; margin-bottom: 1rem;
+}
+
+.modalContent p { text-align: center; margin-bottom: 2rem; color: var(--text-secondary); }
+
+.nftSelectionGrid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem; max-height: 40vh; overflow-y: auto; padding: 1rem;
+    border: 1px solid var(--lab-border); border-radius: 4px; background: var(--lab-bg);
+}
+
+.nftCard {
+    border: 2px solid var(--lab-border); border-radius: 8px; overflow: hidden;
+    cursor: pointer; transition: all 0.2s ease-in-out; background: var(--lab-bg-secondary);
+}
+.nftCard:hover { transform: translateY(-5px); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+.nftCard.selected {
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 15px var(--accent-yellow);
+}
+
+.nftCard img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.nftCard p { font-size: 0.8rem; margin: 0.5rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.footer { margin-top: 2rem; text-align: center; }
+.footer p { color: var(--text-primary); margin-bottom: 1rem; }
+.footer button {
+    background: var(--cyan-glow); color: var(--lab-bg); border: none;
+    padding: 0.8rem 1.5rem; border-radius: 4px; font-size: 1rem;
+    font-weight: bold; cursor: pointer; transition: all 0.2s ease;
+}
+.footer button:hover:not(:disabled) { filter: brightness(1.2); }
+.footer button:disabled { background: #34495e; color: #7f8c8d; cursor: not-allowed; }
+
+.feedback { margin-top: 1rem; color: var(--accent-yellow); font-weight: bold; }

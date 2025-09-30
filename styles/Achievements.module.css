@@ -1,0 +1,13 @@
+/* styles/Achievements.module.css */
+.achievementsContainer {}
+.achievementHeader {
+  text-align: center; font-weight: bold; color: #adb5bd;
+  margin-bottom: 1rem; font-size: 0.9rem;
+  border-bottom: 1px solid #1a3a59; padding-bottom: 0.5rem;
+}
+.achievementItem {
+  display: flex; align-items: center; gap: 0.75rem;
+  background-color: #0d1a26; padding: 0.5rem; border-radius: 5px;
+}
+.achievementItem img { width: 32px; height: 32px; }
+.achievementItem span { font-size: 0.8rem; color: #e0e0e0; flex-grow: 1; text-align: center; }

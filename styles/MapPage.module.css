@@ -1,0 +1,46 @@
+/* /styles/MapPage.module.css (VERSÃO FINAL E COMPLETA) */
+.canvas {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0c0a1a;
+  color: white;
+  font-family: sans-serif;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.constellationContainer {
+  flex-grow: 1;
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+/* --- ESTILOS DO HEADER COMPLETO --- */
+.header {
+  display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 2rem;
+  background-color: rgba(3, 8, 15, 0.7); backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
+}
+.brand { font-weight: 700; font-size: 1.8rem; color: #fff; text-shadow: 0 0 8px #00e5ff; }
+.nav { display: flex; gap: 0.75rem; }
+.cta {
+  padding: 0.6rem 1.2rem; border-radius: 5px; font-weight: 600;
+  transition: all 0.2s ease-in-out; display: flex; align-items: center;
+  gap: 0.5rem; cursor: pointer; border: 1px solid #444;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  background-color: #00e5ff; color: #0c0a1a;
+}
+.cta:hover { filter: brightness(1.2); }
+.rightHeader { display: flex; align-items: center; gap: 1rem; }
+.languageSelector { display: flex; gap: 0.5rem; }
+.languageSelector button { background: transparent; border: 1px solid #444; color: #aaa; padding: 0.5rem; cursor: pointer; }
+.languageSelector button.activeLang { background: #00e5ff; color: #0c0a1a; }
+.walletButton { background-color: #2d3748; border: 1px solid #4a5568; padding: 0.6rem 1rem; border-radius: 5px; }
+.specialActionsContainer { display: flex; gap: 0.75rem; }
+.ctaSpecial { background-color: #f5b040; color: #212529; border: 1px solid #e0a800; font-weight: bold; padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer; }

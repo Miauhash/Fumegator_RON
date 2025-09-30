@@ -1,0 +1,64 @@
+/* styles/globals.css (VERSÃO ATUALIZADA) */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Nova Paleta: Laboratório de Biotecnologia Futurista */
+  --lab-bg: #03080f; /* Fundo principal, um azul quase preto */
+  --lab-bg-secondary: #0a1422; /* Fundo para elementos como modais e painéis */
+  --lab-border: #1f3a5a; /* Bordas sutis e linhas de grade */
+  --cyan-glow: #00e5ff; /* A cor de destaque principal para brilhos e interações */
+  --cyan-text: #66faff; /* Cor para textos de destaque e ícones */
+  --text-primary: #e6f9ff; /* Cor principal do texto, um branco levemente azulado */
+  --text-secondary: #8da4be; /* Cor para textos secundários e descrições */
+  --accent-green: #28a745;
+  --accent-yellow: #ffc107;
+  --accent-red: #dc3545;
+  --font-primary: 'Rajdhani', sans-serif; /* Nossa nova fonte futurista */
+}
+
+/* Efeito de zoom no slide central e fade nos laterais */
+:global(.carousel .slide.selected) .slideContent {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+:global(.carousel .slide:not(.selected)) .slideContent {
+  transform: scale(0.8);
+  opacity: 0.4;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  background-color: var(--lab-bg);
+  color: var(--text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Você pode manter seus estilos de landing page e wallet adapter aqui se desejar */
+
+/* <<< ADICIONE ESTAS REGRAS NO FINAL >>> */
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+}

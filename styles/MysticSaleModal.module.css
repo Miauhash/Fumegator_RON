@@ -1,0 +1,43 @@
+/* styles/MysticSaleModal.module.css (VERSÃO ATUALIZADA) */
+
+.overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(3, 8, 15, 0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1001; backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modalCard {
+    background: linear-gradient(145deg, #1a233b, var(--lab-bg-secondary));
+    border: 1px solid #8d47be; padding: 2rem; border-radius: 16px;
+    width: 90%; max-width: 700px; position: relative;
+    box-shadow: 0 0 30px #8d47beaa, 0 10px 40px rgba(0,0,0,0.6);
+    color: var(--text-primary);
+}
+.closeButton {
+    position: absolute; top: 1rem; right: 1rem; background: transparent; border: none;
+    color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; transition: color 0.2s ease;
+}
+.closeButton:hover { color: #fff; }
+
+.contentWrapper { display: flex; gap: 2rem; align-items: center; }
+.nftDisplay { flex: 0 0 250px; text-align: center; }
+.details { flex: 1; }
+
+.rarityBanner { background: #8d47be; color: white; font-weight: bold; padding: 0.3rem 0; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+.nftImage { width: 100%; height: auto; background: var(--lab-bg); border-left: 2px solid #8d47be; border-right: 2px solid #8d47be; }
+.priceTag {
+    background: var(--lab-bg); color: var(--accent-yellow); font-size: 1.5rem; font-weight: bold; padding: 0.5rem 0;
+    border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+    border: 2px solid #8d47be; border-top: none;
+}
+
+.details h2 { font-size: 2rem; margin-top: 0; margin-bottom: 0.5rem; color: #fff; }
+.subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+.benefitsList { list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+.benefitsList li { display: flex; align-items: center; gap: 0.8rem; }
+.icon { color: #8d47be; font-size: 1.2rem; }
+
+.buyButton { /* O estilo dourado já combina, sem alterações */ }

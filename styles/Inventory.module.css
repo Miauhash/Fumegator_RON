@@ -1,0 +1,14 @@
+/* styles/Inventory.module.css (NOVO ARQUIVO) */
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.inventoryItem {
+  background: var(--lab-bg); border: 1px solid var(--lab-border);
+  border-radius: 8px; padding: 1.5rem;
+  display: flex; flex-direction: column; text-align: center;
+}
+.itemName { font-size: 1.2rem; font-weight: bold; margin: 0; color: #fff; }
+.itemDescription { font-size: 0.8rem; color: var(--text-secondary); flex-grow: 1; margin: 1rem 0; }

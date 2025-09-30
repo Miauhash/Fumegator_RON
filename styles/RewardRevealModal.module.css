@@ -1,0 +1,43 @@
+/* styles/RewardRevealModal.module.css (VERSÃO ATUALIZADA) */
+
+.overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(3, 8, 15, 0.9);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000; backdrop-filter: blur(8px); animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.revealCard {
+    background: var(--lab-bg-secondary);
+    border: 2px solid var(--rarity-glow-color, var(--lab-border));
+    border-radius: 16px; width: 90%; max-width: 400px; position: relative;
+    box-shadow: 0 0 40px var(--rarity-glow-color), 0 0 15px rgba(0,0,0,0.5);
+    color: var(--text-primary); text-align: center; padding: 2rem;
+    animation: zoomIn 0.5s 0.2s ease-out backwards, glowPulse 2s infinite ease-in-out;
+    display: flex; flex-direction: column; gap: 1.5rem;
+}
+@keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 30px var(--rarity-glow-color); }
+    50% { box-shadow: 0 0 50px var(--rarity-glow-color); }
+    100% { box-shadow: 0 0 30px var(--rarity-glow-color); }
+}
+
+.header h3 { margin: 0; color: #fff; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+.imageContainer { border-radius: 8px; overflow: hidden; box-shadow: inset 0 0 15px rgba(0,0,0,0.5); background-color: var(--lab-bg); }
+.nftImage { width: 100%; height: auto; display: block; }
+.details { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.nftName { font-size: 1.8rem; margin: 0; color: #fff; }
+.nftRarity {
+    color: white; padding: 0.3rem 1rem; border-radius: 20px;
+    font-weight: bold; text-transform: uppercase; font-size: 0.9rem;
+}
+
+.continueButton {
+    background: var(--rarity-glow-color, var(--cyan-glow));
+    color: var(--lab-bg); border: none; padding: 0.8rem 1.5rem;
+    border-radius: 8px; font-size: 1.2rem; font-weight: bold;
+    cursor: pointer; transition: transform 0.2s ease; text-transform: uppercase;
+}
+.continueButton:hover { transform: scale(1.05); }

@@ -1,0 +1,60 @@
+/* styles/ModalBase.module.css (ARQUIVO NOVO E FUNDAMENTAL) */
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 8px var(--glow-color), 0 0 12px var(--glow-color); }
+  50% { box-shadow: 0 0 25px var(--glow-color), 0 0 40px var(--glow-color); }
+  100% { box-shadow: 0 0 8px var(--glow-color), 0 0 12px var(--glow-color); }
+}
+
+.modalOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(3, 8, 15, 0.8); backdrop-filter: blur(5px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modalContent {
+    background: var(--lab-bg-secondary);
+    border: 1px solid var(--glow-color, var(--lab-border));
+    padding: 1.5rem 2rem; border-radius: 8px;
+    width: 95%; max-width: 900px; max-height: 90vh;
+    display: flex; flex-direction: column; color: var(--text-primary);
+    --glow-color: var(--cyan-glow); /* Cor padrão do brilho */
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Variante para o modal de Laboratório */
+.modalContentRed {
+    --glow-color: var(--accent-red);
+}
+
+.header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--lab-border);
+    padding-bottom: 1rem; margin-bottom: 1.5rem;
+}
+
+.title { color: var(--glow-color, var(--cyan-text)); margin: 0; font-size: 1.5rem; text-shadow: 0 0 5px var(--glow-color); }
+
+.closeButton {
+    background: transparent; border: none; color: var(--text-secondary);
+    font-size: 1.8rem; cursor: pointer; line-height: 1; transition: color 0.2s ease;
+}
+.closeButton:hover { color: var(--text-primary); }
+
+.mainContent { overflow-y: auto; padding-right: 1rem; }
+
+/* Botões Padronizados */
+.button {
+    background: var(--cyan-glow); color: var(--lab-bg); border: none;
+    padding: 0.8rem 1.5rem; border-radius: 4px; font-size: 1rem;
+    font-weight: bold; cursor: pointer; transition: all 0.2s ease;
+}
+.button:hover:not(:disabled) { filter: brightness(1.2); }
+.button:disabled { background: #34495e; color: #7f8c8d; cursor: not-allowed; }
+
+.buttonSecondary {
+    background-color: #6c757d; color: white;
+}
+.buttonSecondary:hover:not(:disabled) { background-color: #5a6268; }

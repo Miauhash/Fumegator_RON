@@ -1,0 +1,534 @@
+/* styles/LandingPage.module.css (VERSÃO FINAL COM TODAS AS MELHORIAS) */
+
+/* --- EFEITOS GLOBAIS E DE FUNDO --- */
+.wrapper {
+  background-color: #03080f;
+  color: #e6f9ff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.backgroundEffects {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image:
+    radial-gradient(rgba(31, 58, 90, 0.5) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+}
+
+/* --- MÚSICA --- */
+.musicToggle {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: rgba(10, 20, 34, 0.8); backdrop-filter: blur(5px);
+  border: 1px solid #1f3a5a; color: #66faff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease;
+}
+.musicToggle:hover {
+  background: #00e5ff; color: #03080f;
+  box-shadow: 0 0 15px #00e5ff;
+}
+
+
+/* --- HEADER --- */
+.header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 4rem;
+  background: rgba(3, 8, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f3a5a;
+}
+.logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; }
+.logo span { color: #66faff; text-shadow: 0 0 8px #00e5ff; }
+
+.nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+.nav a {
+  margin: 0 1.5rem; color: #8da4be; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
+  position: relative; text-decoration: none; padding-bottom: 5px;
+}
+.nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 0%; height: 2px; background: #00e5ff;
+  transition: width 0.3s ease;
+}
+.nav a:hover { color: #e6f9ff; }
+.nav a:hover::after { width: 100%; }
+
+.playButton {
+  background: #00e5ff; color: #03080f; text-decoration: none;
+  padding: 0.8rem 2rem; border-radius: 5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+.playButton:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px #00e5ff;
+  transform: translateY(-2px);
+}
+
+
+/* --- SEÇÃO HERO --- */
+.hero {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 90vh; padding: 4rem; position: relative;
+  gap: 4rem; /* Aumenta o espaço entre a imagem e o texto */
+}
+.heroContent { text-align: left; z-index: 2; max-width: 600px; }
+.heroContent h1 {
+  font-size: 4.5rem; font-weight: 700; line-height: 1.1;
+}
+.heroContent h1 span { color: #66faff; text-shadow: 0 0 15px #00e5ff; }
+.heroContent p { font-size: 1.2rem; color: #8da4be; margin-top: 1.5rem; margin-bottom: 2rem; max-width: 500px; }
+
+.heroButtons { display: flex; gap: 1rem; }
+.ctaButton {
+  background: #00e5ff; color: #03080f; text-decoration: none;
+  padding: 0.8rem 2rem; border-radius: 5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+.ctaButton:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px #00e5ff;
+  transform: translateY(-2px);
+}
+.secondaryButton {
+  background: transparent; color: #e6f9ff; text-decoration: none;
+  border: 1px solid #1f3a5a;
+  padding: 0.8rem 2rem; border-radius: 5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
+}
+.secondaryButton:hover { background: rgba(0, 229, 255, 0.1); border-color: #66faff; }
+
+.heroImageContainer { z-index: 1; }
+
+/* --- ANIMAÇÕES DE SCROLL --- */
+.section {
+  padding: 6rem 4rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.section.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sectionContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.sectionContent h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+.sectionSubtitle {
+    font-size: 1.1rem;
+    color: #8da4be;
+    margin-bottom: 3rem;
+}
+
+/* --- CARDS HOLOGRÁFICOS --- */
+.tokenomicsCard, .teamCard, .stepItem {
+  background: linear-gradient(160deg, rgba(10, 20, 34, 0.7), rgba(3, 8, 15, 0.8));
+  border: 1px solid #1f3a5a;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  text-align: left;
+}
+.tokenomicsCard:hover, .teamCard:hover, .stepItem:hover {
+  transform: translateY(-8px);
+  border-color: #66faff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 229, 255, 0.2);
+}
+
+/* --- SEÇÃO AIRDROP --- */
+.airdropForm { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.formGroup { display: flex; gap: 1rem; }
+.input {
+  flex: 1; background: rgba(10, 20, 34, 0.8); border: 1px solid #1f3a5a;
+  color: #e6f9ff; padding: 1rem; border-radius: 5px; font-size: 1rem;
+}
+.airdropButton { width: 100%; }
+
+
+/* --- SEÇÃO GET STARTED --- */
+.gettingStartedContainer { display: flex; flex-direction: column; gap: 1rem; }
+.stepItem { display: flex; align-items: center; gap: 2rem; }
+.stepNumber { font-size: 3rem; font-weight: 700; color: #1f3a5a; }
+.stepContent h3 { margin: 0 0 0.5rem 0; color: #fff; }
+.stepContent p { margin: 0; color: #8da4be; }
+
+/* --- SEÇÃO TOKENOMICS --- */
+.tokenomicsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.tokenomicsValue { font-size: 2.5rem; font-weight: 700; color: #66faff; margin: 1rem 0; }
+
+/* --- SEÇÃO TIME --- */
+.teamGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center; }
+.teamImageWrapper { width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 1rem auto; border: 3px solid #1f3a5a; }
+.teamCard h3 { margin: 0.5rem 0; }
+.teamCard p { margin: 0; color: #8da4be; }
+.teamSocials { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; font-size: 1.2rem; }
+.teamSocials a { color: #8da4be; transition: color 0.3s; }
+.teamSocials a:hover { color: #00e5ff; }
+
+/* --- SEÇÃO ROADMAP --- */
+.roadmapContainer { position: relative; padding: 2rem 0; }
+.roadmapLine { position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: #1f3a5a; transform: translateX(-50%); }
+.roadmapItem { display: flex; justify-content: center; margin-bottom: 3rem; position: relative; }
+.roadmapMilestone {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 50px; height: 50px; border-radius: 50%; background: #00e5ff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: #03080f;
+    border: 5px solid #03080f;
+    box-shadow: 0 0 10px #00e5ff;
+}
+.roadmapContent {
+    width: 40%; padding: 1.5rem;
+    background: linear-gradient(160deg, rgba(10, 20, 34, 0.7), rgba(3, 8, 15, 0.8));
+    border: 1px solid #1f3a5a; border-radius: 8px;
+}
+.roadmapItem:nth-child(odd) .roadmapContent { transform: translateX(-125%); text-align: right; }
+.roadmapItem:nth-child(even) .roadmapContent { transform: translateX(125%); text-align: left; }
+.roadmapContent h3 { margin-top: 0; color: #fff; }
+.roadmapContent p { color: #8da4be; }
+
+/* --- FOOTER --- */
+.footer {
+  text-align: center; padding: 3rem; border-top: 1px solid #1f3a5a;
+  margin-top: 2rem; background: rgba(3, 8, 15, 0.5);
+}
+.socialLinks { display: flex; justify-content: center; gap: 2rem; font-size: 1.8rem; margin-bottom: 1rem; }
+.socialLinks a { color: #8da4be; transition: all 0.3s; }
+.socialLinks a:hover { color: #00e5ff; transform: translateY(-3px); }
+
+
+/* --- NOVOS ESTILOS E CORREÇÕES --- */
+
+/* Estilo para a caixa da imagem do herói */
+.heroImageBox {
+  border: 2px solid #1f3a5a;
+  padding: 1.5rem;
+  background: radial-gradient(circle, rgba(14, 30, 53, 0.5) 0%, rgba(3, 8, 15, 0.7) 70%);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2), inset 0 0 15px rgba(14, 30, 53, 0.5);
+  position: relative;
+}
+
+/* Enquadramento da imagem do herói */
+.heroImageFit {
+  object-fit: contain;
+}
+
+/* Container do Título do Herói */
+.heroTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.heroTitleContainer h1 {
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para o badge "LIMITED" e "TESTNET" */
+.airdropTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+.limitedBadge {
+  background-color: #f5b040;
+  color: #03080f;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  transform: rotate(-10deg);
+  border-radius: 5px;
+  animation: pulseBadge 1.5s infinite ease-in-out;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+@keyframes pulseBadge {
+  0% { transform: rotate(-10deg) scale(1); box-shadow: 0 0 5px #f5b040, 0 0 10px #f5b040; }
+  50% { transform: rotate(-10deg) scale(1.05); box-shadow: 0 0 20px #f5b040, 0 0 30px #f5b040; }
+  100% { transform: rotate(-10deg) scale(1); box-shadow: 0 0 5px #f5b040, 0 0 10px #f5b040; }
+}
+
+/* Badge TESTNET */
+.headerBadge {
+  font-size: 1rem !important;
+  padding: 0.4rem 1rem !important;
+  background-color: #dc3545 !important;
+  color: #fff !important;
+  animation: pulseRedBadge 2s infinite ease-in-out !important;
+  transform: translateY(-10px) rotate(-5deg);
+}
+@keyframes pulseRedBadge {
+  0% { box-shadow: 0 0 3px #dc3545, 0 0 6px #dc3545; }
+  50% { box-shadow: 0 0 15px #dc3545, 0 0 25px #dc3545; }
+  100% { box-shadow: 0 0 3px #dc3545, 0 0 6px #dc3545; }
+}
+
+/* Estilo para a nota sobre os tokens da equipe */
+.teamTokenNote {
+  max-width: 800px;
+  margin: -1rem auto 2.5rem auto;
+  padding: 1rem;
+  background-color: rgba(10, 20, 34, 0.5);
+  border-left: 4px solid #00e5ff;
+  border-radius: 4px;
+  color: #8da4be;
+  font-style: italic;
+}
+
+/* Carrossel de NFTs */
+.carouselWrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 2px solid #1f3a5a;
+    border-radius: 15px;
+    background: radial-gradient(circle, rgba(14, 30, 53, 0.2) 0%, rgba(3, 8, 15, 0.4) 70%);
+}
+.carouselSlide {
+    padding: 1rem;
+    /* Adicionado para centralizar a imagem no slide */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carouselImage {
+    border-radius: 8px;
+    max-height: 400px; /* Garante que a imagem não ultrapasse a altura */
+    width: auto; /* Mantém a proporção */
+}
+.carouselArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: rgba(10, 20, 34, 0.8);
+    border: 1px solid #1f3a5a;
+    color: #66faff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.carouselArrow:hover {
+    background-color: #00e5ff;
+    color: #03080f;
+}
+.prevArrow {
+    left: -25px;
+}
+.nextArrow {
+    right: -25px;
+}
+
+/* Efeito de Vidro Quebrando */
+@keyframes shatter-animation {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+.glassPane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/glass_texture.png');
+    background-size: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 15px;
+}
+.glassPane.shatter {
+    animation: shatter-animation 0.5s ease-out forwards;
+}
+
+/* Feedback de Formulário */
+.successMessage, .errorMessage {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.successMessage {
+  background-color: rgba(40, 167, 69, 0.2);
+  border: 1px solid #28a745;
+  color: #28a745;
+}
+.errorMessage {
+  background-color: rgba(220, 53, 69, 0.2);
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .playButton {
+    order: 2;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .heroContent {
+    text-align: center;
+  }
+  .heroImageContainer {
+    margin-left: 0;
+    margin-bottom: 2rem;
+  }
+  .heroButtons, .airdropTitleContainer {
+    justify-content: center;
+  }
+  .formGroup {
+    flex-direction: column;
+  }
+  .roadmapItem:nth-child(odd) .roadmapContent, .roadmapItem:nth-child(even) .roadmapContent {
+    transform: translateX(0);
+    width: 80%;
+    margin-left: auto;
+    text-align: left;
+  }
+  .roadmapMilestone {
+    left: 10%;
+  }
+  .roadmapLine {
+    left: 10%;
+  }
+}
+
+/* ============================================== */
+/* === ADICIONE ESTES ESTILOS AO SEU CSS EXISTENTE === */
+/* ============================================== */
+
+/* --- NOVOS ESTILOS: Carrossel de NFTs Elegante --- */
+
+.carouselContainer {
+  /* Remove o fundo transparente para se integrar melhor */
+  width: 100%;
+  max-width: 1400px; /* Largura máxima para o carrossel */
+  margin: 2rem auto;
+  position: relative;
+}
+
+.slide {
+  padding: 0 1rem;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.slideImage {
+  border-radius: 12px;
+  object-fit: contain;
+  background-color: rgba(255, 255, 255, 0.05); /* Um brilho sutil na imagem */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+}
+
+.slideTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #8da4be;
+}
+
+/* Estilo das setas de navegação */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.arrow:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.arrowPrev {
+  left: 2rem;
+}
+.arrowNext {
+  right: 2rem;
+}
+
+/* <<< ADICIONE ESTE NOVO BLOCO DE ESTILOS >>> */
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap; /* Garante que os links quebrem a linha em telas pequenas */
+}
+
+.footerLinks a {
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-color-primary);
+  text-decoration: underline;
+}
+
+.footerLinks span {
+  color: var(--border-color);
+}

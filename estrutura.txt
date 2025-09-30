@@ -1,0 +1,89 @@
+Estrutura mínima do seu jogo (Next.js + Prisma + API + Game)
+fumegator/
+│── components/
+│   └── Game.js                # Frontend principal do jogo
+│── pages/
+│   └── index.js               # Carrega o Game.js
+│   └── api/
+│       └── user/
+│           ├── save.js        # Salvar progresso
+│           ├── load.js        # Carregar progresso
+│           ├── saveEvents.js  # Salvar eventos
+│           ├── loadEvents.js  # Carregar eventos
+│           ├── withdraw.js    # Saques (tokens reais)
+│── prisma/
+│   └── schema.prisma          # Definição do banco (SQLite ou PostgreSQL)
+│   └── dev.db                 # Banco local (caso SQLite)
+│── public/
+│   └── img/                   # Sprites, mascotes, ícones etc
+│── styles/
+│   └── Game.module.css        # Estilo do jogo
+│── package.json               # Dependências (React, Next.js, Prisma, Solana)
+│── next.config.js             # Configurações do Next
+│── .env                       # Variáveis de ambiente (RPC Solana, chaves etc)
+│── game-wallet.json           # Chave da carteira do jogo (⚠️ cuidado: privado)
+│── README.md                  # Instruções de instalação
+
+📦 Dependências que precisam estar no package.json
+
+Next.js / React (frontend)
+
+Prisma (ORM para DB)
+
+SQLite ou PostgreSQL (banco)
+
+@solana/web3.js (conectar Solana)
+
+@solana/spl-token (transferir tokens SPL)
+
+phosphor-icons / react-icons (ícones como FaWallet, FaWarehouse etc)
+
+🔧 Passos para instalar na VPS
+
+Clonar ou enviar o projeto:
+
+git clone SEU_REPO.git
+cd fumegator
+
+
+Instalar dependências:
+
+npm install
+
+
+Configurar banco (Prisma):
+
+npx prisma migrate dev --name init
+
+
+Se usar SQLite, já terá prisma/dev.db.
+Se usar PostgreSQL, configure no .env:
+
+DATABASE_URL="postgresql://user:pass@localhost:5432/fumegator"
+
+
+Configurar Solana e a wallet:
+
+game-wallet.json (chave privada do jogo) precisa estar na VPS.
+
+RPC Solana em .env:
+
+SOLANA_CLUSTER=devnet
+RPC_URL=https://api.devnet.solana.com
+
+
+Rodar servidor Next:
+
+npm run build
+npm run start
+
+
+(ou com PM2 para rodar em segundo plano: pm2 start npm -- start)
+
+⚠️ Muito importante:
+
+Sem os arquivos da pasta pages/api/user/ o backend não salva nem carrega nada.
+
+Sem o schema.prisma e dev.db (ou PostgreSQL), não tem onde persistir.
+
+Sem game-wallet.json e RPC válido, os withdraws não vão funcionar.
